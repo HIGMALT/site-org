@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro - França E-Sports</title>
+
+<style>
+body {
+  background: #0d0d0d;
+  color: white;
+  font-family: Arial;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 10px;
+  width: 400px;
+}
+
+h2 {
+  text-align: center;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 5px;
+  background: #2a2a2a;
+  color: white;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: red;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: darkred;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>Cadastro - França E-Sports</h2>
+
+<form id="form">
+
+<h3>🧾 Dados</h3>
+<input type="text" placeholder="Nome do ADM" required>
+<input type="text" placeholder="Nome completo" required>
+<input type="number" placeholder="CPF" required>
+
+<h3>☎ Contatos</h3>
+<input type="text" placeholder="Número principal" required>
+<input type="text" placeholder="Número do Pai" required>
+<input type="text" placeholder="Número da mãe" required>
+
+<h3>🎮 Jogo</h3>
+<input type="text" placeholder="Nick no Free Fire" required>
+<input type="text" placeholder="ID do jogo" required>
+
+<textarea placeholder="Experiência"></textarea>
+
+<h3>📌 Confirmação</h3>
+<label>
+  <input type="checkbox" required>
+  Confirmo que concordo com as regras da organização.
+</label>
+
+<button type="submit">Enviar</button>
+
+</form>
+</div>
+
+<script>
+document.getElementById("form").addEventListener("submit", async function(e){
+  e.preventDefault();
+
+  const inputs = document.querySelectorAll("input, textarea");
+
+  let dados = "📩 NOVO CADASTRO - FRANÇA E-SPORTS\n\n";
+
+  inputs.forEach((input) => {
+    if(input.type !== "checkbox"){
+      dados += `${input.placeholder}: ${input.value}\n`;
+    }
+  });
+
+  try {
+    await fetch("https://discord.com/api/webhooks/1492687038762188810/zwJV6yCuDDkdJqyaRHGCcu_sMikz3dDZrLchrXcDu1IWHJOgbrBbX9ksPMmiwDFb-qv0", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        content: dados
+      })
+    });
+
+    alert("Enviado pro Discord 🔥");
+    this.reset();
+
+  } catch (erro) {
+    alert("Erro ao enviar 😢");
+    console.error(erro);
+  }
+});
+</script>
+
+</body>
+</html>
