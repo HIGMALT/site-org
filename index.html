@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Registros - Sonic Apostas</title>
+<title>Registro - Sonic Apostas</title>
 
 <style>
 body {
@@ -134,22 +134,19 @@ document.getElementById("form").addEventListener("submit", async function(e){
 
   try {
     await fetch("https://discord.com/api/webhooks/1492687038762188810/zwJV6yCuDDkdJqyaRHGCcu_sMikz3dDZrLchrXcDu1IWHJOgbrBbX9ksPMmiwDFb-qv0", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        content: mensagem
-      })
-    });
-
-    alert("Cadastro enviado 🔥");
-    this.reset();
-
-  } catch (erro) {
-    alert("Erro ao enviar 😢");
-  }
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    content: mensagem
+  })
+}).then(() => {
+  alert("Enviado pro Discord 🔥");
+}).catch((err) => {
+  alert("Erro real: " + err);
 });
+}
 </script>
 
 </body>
