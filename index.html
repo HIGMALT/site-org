@@ -2,79 +2,62 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Cadastro - Sonic Apostas</title>
+<title>Cadastro - França E-Sports</title>
 
 <style>
 body {
-  background: #0b0283;
-  color: white;
+  background: #0d0d0d;
   font-family: Arial;
+  color: white;
   display: flex;
   justify-content: center;
   padding: 20px;
 }
 
 .container {
-  background: #1a1a1a;
+  background: #161616;
   padding: 25px;
-  border-radius: 10px;
-  width: 400px;
+  border-radius: 12px;
+  width: 350px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 h2 {
   text-align: center;
 }
 
-input, textarea {
+.input-group {
+  margin-bottom: 12px;
+}
+
+input {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 5px;
-  background: #2a2a2a;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  background: #1f1f1f;
   color: white;
+  outline: none;
+}
+
+input:focus {
+  border: 1px solid #4caf50;
 }
 
 button {
   width: 100%;
-  padding: 10px;
-  background: red;
+  padding: 12px;
+  background: #00c853;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   color: white;
+  font-weight: bold;
   cursor: pointer;
+  margin-top: 15px;
 }
 
 button:hover {
-  background: darkred;
-}
-
-/* LOADING SONIC */
-#loading {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #0a1aff;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-.loader-content {
-  text-align: center;
-}
-
-.loader-content img {
-  width: 120px;
-}
-
-.loader-content p {
-  margin-top: 10px;
-  font-size: 18px;
-  color: white;
+  background: #00b34a;
 }
 </style>
 </head>
@@ -82,62 +65,54 @@ button:hover {
 <body>
 
 <div class="container">
-<h2>Cadastro - Sonic Apostas</h2>
+  <h2>Cadastro - França E-Sports</h2>
 
-<form id="form">
+  <form id="form">
 
-<h3>🧾 Dados</h3>
-<input type="text" placeholder="Nome do ADM" required>
-<input type="text" placeholder="Nome completo" required>
-<input type="number" placeholder="CPF" required>
+    <div class="input-group">
+      <input type="text" id="adm" placeholder="Nome do ADM" required>
+    </div>
 
-<h3>☎ Contatos</h3>
-<input type="number" placeholder="Número principal" required>
-<input type="number" placeholder="Número do Pai" required>
-<input type="number" placeholder="Número da Mãe" required>
-<input type="text" placeholder="Discord Nick" required>
+    <div class="input-group">
+      <input type="text" id="discord" placeholder="Nome no Discord" required>
+    </div>
 
-<h3>🎮 Jogo</h3>
-<input type="text" placeholder="Nick no Free Fire" required>
-<input type="number" placeholder="ID do jogo" required>
+    <div class="input-group">
+      <input type="email" id="email" placeholder="Email" required>
+    </div>
 
-<textarea placeholder="Experiência"></textarea>
+    <div class="input-group">
+      <input type="text" id="gameid" placeholder="ID do jogo" required>
+    </div>
 
-<h3>📌 Confirmação</h3>
-<label>
-  <input type="checkbox" required>
-  Confirmo que concordo com as regras da organização.
-</label>
+    <div class="input-group">
+      <input type="text" id="telefone" placeholder="Número de telefone" required>
+    </div>
 
-<button type="submit">Enviar</button>
+    <button type="submit">Cadastrar</button>
 
-</form>
-</div>
-
-<!-- LOADING -->
-<div id="loading">
-  <div class="loader-content">
-    <img src="https://media.giphy.com/media/LMt9638dO8dftAjtco/giphy.gif">
-    <p>Enviando...</p>
-  </div>
+  </form>
 </div>
 
 <script>
 document.getElementById("form").addEventListener("submit", async function(e){
   e.preventDefault();
 
-  const loading = document.getElementById("loading");
-  loading.style.display = "flex";
+  const adm = document.getElementById("adm").value;
+  const discord = document.getElementById("discord").value;
+  const email = document.getElementById("email").value;
+  const gameid = document.getElementById("gameid").value;
+  const telefone = document.getElementById("telefone").value;
 
-  const inputs = document.querySelectorAll("input, textarea");
+  let mensagem = `
+📩 NOVO CADASTRO
 
-  let dados = "📩 NOVO CADASTRO - SONIC APOSTAS\n\n";
-
-  inputs.forEach((input) => {
-    if(input.type !== "checkbox"){
-      dados += `${input.placeholder}: ${input.value}\n`;
-    }
-  });
+👤 ADM: ${adm}
+🎮 Discord: ${discord}
+📧 Email: ${email}
+🆔 ID do jogo: ${gameid}
+📱 Telefone: ${telefone}
+`;
 
   try {
     await fetch("https://discord.com/api/webhooks/1492687038762188810/zwJV6yCuDDkdJqyaRHGCcu_sMikz3dDZrLchrXcDu1IWHJOgbrBbX9ksPMmiwDFb-qv0", {
@@ -146,16 +121,14 @@ document.getElementById("form").addEventListener("submit", async function(e){
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        content: dados
+        content: mensagem
       })
     });
 
-    loading.style.display = "none";
-    alert("Enviado com sucesso 🔥");
+    alert("Cadastro enviado 🔥");
     this.reset();
 
   } catch (erro) {
-    loading.style.display = "none";
     alert("Erro ao enviar 😢");
   }
 });
