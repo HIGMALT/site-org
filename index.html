@@ -90,11 +90,11 @@ button:hover {
     </div>
 
     <div class="input-group">
-      <input type="number" id="telefoneone" placeholder="Número Do Pai" required>
+      <input type="number" id="telefonepai" placeholder="Número Do Pai" required>
     </div>
 
     <div class="input-group">
-      <input type="number" id="telefonetwo" placeholder="Número Da Mãe" required>
+      <input type="number" id="telefonemae" placeholder="Número Da Mãe" required>
     </div>
 
     <div class="input-group">
@@ -115,9 +115,9 @@ document.getElementById("form").addEventListener("submit", async function(e){
   const email = document.getElementById("email").value;
   const gameid = document.getElementById("gameid").value;
   const telefone = document.getElementById("telefone").value;
-  const telefoneone = document.getElementById("telefoneone")
-  const telefonetwo = document.getElementById("telefonetwo")
-  const cpf = document.getElementById("CPF")
+  const telefonepai = document.getElementById("telefonepai").value;
+  const telefonemae = document.getElementById("telefonemae").value;
+  const cpf = document.getElementById("cpf").value;
 
   let mensagem = `
 📩 NOVO CADASTRO
