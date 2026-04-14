@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Cadastro - Sonic Apostas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
   background: url("b866eb1b-c352-4473-8f66-217b91ddc05c.jpg") no-repeat center center fixed;
   background-size: cover;
+  background-position: center;
   font-family: Arial;
   color: white;
   display: flex;
@@ -19,7 +21,8 @@ body {
   background: #161616;
   padding: 25px;
   border-radius: 12px;
-  width: 350px;
+  width: 90%;
+  max-width: 400px;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
@@ -60,6 +63,28 @@ button {
 button:hover {
   background: #00b34a;
 }
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  input {
+    padding: 10px;
+  }
+
+  button {
+    padding: 10px;
+  }
+}
 </style>
 </head>
 
@@ -67,6 +92,9 @@ button:hover {
 
 <div class="container">
   <h2>Cadastro - Sonic Apostas</h2>
+
+  min-height: 100vh;
+  align-items: center;
 
   <form id="form">
 
